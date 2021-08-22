@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/searchFragment">
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.nido.github.feature.content.search.ui.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_searchFragment_to_repositoryFragment"
+            app:destination="@id/repositoryFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_searchFragment_to_ownerFragment"
+            app:destination="@id/ownerFragment"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:exitAnim="@anim/slide_out_top"
+            app:popEnterAnim="@anim/slide_in_top"
+            app:popExitAnim="@anim/slide_out_bottom" />
+        <action
+            android:id="@+id/action_searchFragment_to_userFragment"
+            app:destination="@id/userFragment"
+            app:enterAnim="@anim/slide_in_top"
+            app:exitAnim="@anim/slide_out_bottom"
+            app:popEnterAnim="@anim/slide_in_bottom"
+            app:popExitAnim="@anim/slide_out_top" />
+    </fragment>
+    <fragment
+        android:id="@+id/repositoryFragment"
+        android:name="com.nido.github.feature.content.repository.RepositoryFragment"
+        android:label="fragment_repository"
+        tools:layout="@layout/fragment_repository">
+        <argument
+            android:name="repository"
+            app:argType="com.nido.github.feature.content.search.data.Repository" />
+        <action
+            android:id="@+id/action_repositoryFragment_to_ownerFragment"
+            app:destination="@id/ownerFragment"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:exitAnim="@anim/slide_out_top"
+            app:popEnterAnim="@anim/slide_in_top"
+            app:popExitAnim="@anim/slide_out_bottom" />
+    </fragment>
+    <fragment
+        android:id="@+id/ownerFragment"
+        android:name="com.nido.github.feature.content.owner.ui.OwnerFragment"
+        android:label="fragment_owner"
+        tools:layout="@layout/fragment_owner">
+        <argument
+            android:name="owner"
+            app:argType="com.nido.github.feature.content.owner.data.Owner" />
+    </fragment>
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.nido.github.feature.content.user.ui.UserFragment"
+        android:label="fragment_user"
+        tools:layout="@layout/fragment_user" >
+        <argument
+            android:name="user"
+            app:argType="com.nido.github.feature.content.user.data.User" />
+    </fragment>
+</navigation>

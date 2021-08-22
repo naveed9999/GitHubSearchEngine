@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">GitHub Search Engine</string>
+    // Labels
+    <string name="hint_search">Search</string>
+    <string name="repository_title">Name</string>
+    <string name="repository_user">Full Name</string>
+    <string name="repository_description">Description</string>
+    <string name="item_search_watchers">Watchers</string>
+    <string name="item_search_forks">Forks</string>
+    <string name="item_search_issues">Issues</string>
+    <string name="item_search_last_update">Last update: %s</string>
+    <string name="label_owner">"Owner: "</string>
+    <string name="label_repository_name">"Repository name: "</string>
+    <string name="label_sort">Sort by</string>
+    <string name="type_label">Type</string>
+    <string name="admin_label">Admin</string>
+    <string name="company_label">Company</string>
+    <string name="location_label">Location</string>
+    <string name="email_label">Email</string>
+    <string name="profile">Profile</string>
+    <string name="bio_label">Bio</string>
+    <string name="user_followers_label">Followers</string>
+    <string name="user_following_label">Following</string>
+    // Buttons
+    <string name="repository_more_on_owner">More on owner</string>
+    <string name="repository_inspect_in_browser">Open repository in browser</string>
+    <string name="owner_inspect_in_browser">Open owner in browser</string>
+    <string name="user_inspect_in_browser">Open profile in browser</string>
+    <string name="authenticate_user">Continue with GitHub</string>
+    <string name="logout">Logout</string>
+    <string name="continue_without_authentication">Continue without authentication</string>
+    // Loading dialog messages
+    <string name="loading_dialog_search_repository">Loading repositories</string>
+    <string name="loading_more_repositories">Loading more repositories</string>
+    <string name="loading_new_repositories">Loading new repositories</string>
+    <string name="loading_more_owner_data">Loading more owner data</string>
+    <string name="getting_access_token">Getting access token</string>
+    // Toast messages
+    <string name="warning_message_search_repository">Error while loading repositories</string>
+    <string name="query_empty_warning">Query can\'t be empty</string>
+    <string name="error_loading_more_owner_data">Unable to load more data for this user</string>
+    <string name="repository_language">Language</string>
+    <string name="warning_message_access_token">Unable to get access token</string>
+    // AndroidManifest
+    <string name="manifest_host">callback</string>
+    <string name="manifest_scheme">nido</string>
+</resources>

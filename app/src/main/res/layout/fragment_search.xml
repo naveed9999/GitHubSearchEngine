@@ -1,0 +1,147 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.nido.github.feature.content.user.data.User" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".feature.content.search.ui.SearchFragment">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/search_toolbar_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/search_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@color/colorPrimaryDark">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="@dimen/medium_padding">
+
+                    <TextView
+                        android:id="@+id/search_logout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/logout"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/highlighted_text"
+                        app:layout_constraintLeft_toLeftOf="parent" />
+
+                    <TextView
+                        android:id="@+id/search_repository_user_profile"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="@dimen/medium_padding"
+                        android:gravity="center_vertical|end"
+                        android:text="@{user.login}"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/highlighted_text"
+                        app:layout_constraintLeft_toRightOf="@id/search_logout"
+                        app:layout_constraintRight_toLeftOf="@id/search_repository_user_avatar" />
+
+                    <ImageView
+                        android:id="@+id/search_repository_user_avatar"
+                        setAvatar="@{user.avatar}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:paddingTop="@dimen/normal_padding"
+                        android:paddingBottom="@dimen/normal_padding"
+                        app:layout_constraintRight_toRightOf="parent"
+                        tools:ignore="ContentDescription" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/search_repository_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@id/search_repository_parent"
+            app:layout_constraintTop_toBottomOf="@id/search_toolbar_parent"
+            tools:itemCount="20"
+            tools:listitem="@layout/item_search" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/search_repository_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/no_radius"
+            app:cardElevation="@dimen/search_repository_parent_card_elevation"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:baselineAligned="false">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/search_query_parent"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/normal_padding"
+                    android:layout_weight="1"
+                    android:hint="@string/hint_search"
+                    app:endIconMode="clear_text"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:startIconDrawable="@drawable/ic_search">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/search_query"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:id="@+id/search_sort_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/filter_background"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/medium_padding"
+            android:paddingTop="@dimen/normal_padding"
+            android:paddingRight="@dimen/medium_padding"
+            android:paddingBottom="@dimen/normal_padding"
+            app:layout_constraintBottom_toTopOf="@id/search_repository_parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/label_sort"
+                android:textColor="@color/white"
+                android:textSize="@dimen/highlighted_text" />
+
+            <TextView
+                android:id="@+id/search_sort_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/small_text" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
