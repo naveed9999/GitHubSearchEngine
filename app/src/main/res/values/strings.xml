@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GitHub Search Engine</string>
+    <string name="app_name">RepoSearchEngine</string>
     // Labels
     <string name="hint_search">Search</string>
     <string name="repository_title">Name</string>
