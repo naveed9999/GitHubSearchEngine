@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -88,16 +89,18 @@ class SearchFragment : BaseFragment(), SearchListener {
     }
 
     private fun implementListeners(binding: FragmentSearchBinding) {
-        binding.searchQueryParent.setStartIconOnClickListener {
-            binding.searchQuery.text.toString().also {
-                if (it != "") {
-                    viewModel.searchRepositories(it)
-                } else {
-                    showToastMessage(R.string.query_empty_warning)
-                }
-                clearSearchInputFocus(binding)
-            }
+        binding.searchQueryParent.setEndIconOnClickListener {
+            initiateSearch(binding)
         }
+
+        binding.searchQuery.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                initiateSearch(binding)
+            }
+            true
+        }
+
+
         binding.searchLogout.setOnClickListener { onLogoutClick() }
 
         binding.searchRepositoryRecyclerView.addOnScrollListener(object :
@@ -112,6 +115,17 @@ class SearchFragment : BaseFragment(), SearchListener {
                 }
             }
         })
+    }
+
+    private fun initiateSearch(binding: FragmentSearchBinding) {
+        binding.searchQuery.text.toString().also {
+            if (it != "") {
+                viewModel.searchRepositories(it)
+            } else {
+                showToastMessage(R.string.query_empty_warning)
+            }
+            clearSearchInputFocus(binding)
+        }
     }
 
     private fun clearSearchInputFocus(binding: FragmentSearchBinding) {

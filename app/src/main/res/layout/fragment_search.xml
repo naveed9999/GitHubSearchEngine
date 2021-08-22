@@ -67,23 +67,13 @@
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/search_repository_recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toTopOf="@id/search_repository_parent"
-            app:layout_constraintTop_toBottomOf="@id/search_toolbar_parent"
-            tools:itemCount="20"
-            tools:listitem="@layout/item_search" />
-
         <androidx.cardview.widget.CardView
+            app:layout_constraintTop_toBottomOf="@id/search_toolbar_parent"
             android:id="@+id/search_repository_parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="@dimen/no_radius"
-            app:cardElevation="@dimen/search_repository_parent_card_elevation"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:cardElevation="@dimen/search_repository_parent_card_elevation">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -100,17 +90,28 @@
                     android:layout_margin="@dimen/normal_padding"
                     android:layout_weight="1"
                     android:hint="@string/hint_search"
-                    app:endIconMode="clear_text"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:startIconDrawable="@drawable/ic_search">
+                    app:endIconMode="custom"
+                    app:endIconDrawable="@drawable/ic_search">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/search_query"
+                        android:imeOptions="actionSearch"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/search_repository_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@id/search_repository_parent"
+            tools:itemCount="20"
+            tools:listitem="@layout/item_search" />
 
         <LinearLayout
             android:id="@+id/search_sort_parent"
@@ -123,7 +124,7 @@
             android:paddingTop="@dimen/normal_padding"
             android:paddingRight="@dimen/medium_padding"
             android:paddingBottom="@dimen/normal_padding"
-            app:layout_constraintBottom_toTopOf="@id/search_repository_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent">
 
             <TextView

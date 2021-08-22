@@ -42,6 +42,18 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+
+    lintOptions {
+        abortOnError false
+        checkAllWarnings false
+        checkReleaseBuilds false
+        ignoreWarnings true
+        quiet true
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4G"
+    }
 }
 
 dependencies {
